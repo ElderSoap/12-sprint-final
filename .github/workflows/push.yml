@@ -1,16 +1,18 @@
-name: final-workflow
+name: golang-pipeline
 on: push
 jobs:
   test:
     runs-on: ubuntu-latest
-    container: golang:1.23
+    container: golang:1.22
     steps:
       - uses: actions/checkout@v4
 
       - name: Vet
         run: |
-          go vet ./...
+                    go vet ./...
 
       - name: Ran Unit Tests
-        run: GOOS=linux GOARCH=amd64 go test
+        run: GOOS=linux GOARCH=amd64 go test ./...
 
+
+  
